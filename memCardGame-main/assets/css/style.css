@@ -1,0 +1,122 @@
+@font-face{
+  font-family: 'Peanuts';
+  src: url('../fonts/PEANUTS_.ttf') format('truetype');
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Peanuts', sans-serif;
+}
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #8fb8ea url('../img/bg.jpg') center bottom / cover no-repeat fixed;
+}
+.wrapper{
+  padding: 25px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+h1{
+  text-align: center;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #e53935;
+  margin-bottom: 6px;
+}
+.info{
+  text-align: center;
+  font-size: 22px;
+  color: #333;
+}
+.status{
+  text-align: center;
+  font-size: 18px;
+  color: #e53935;
+  min-height: 24px;
+  margin-bottom: 8px;
+}
+.cards, .card, .view{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cards{
+  margin: 0 auto;
+  height: 400px;
+  width: 400px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.cards .card{
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  height: calc(100% / 4 - 10px);
+  width: calc(100% / 4 - 10px);
+}
+.card.shake{
+  animation: shake 0.35s ease-in-out;
+}
+@keyframes shake {
+  0%, 100%{ transform: translateX(0); }
+  20%{ transform: translateX(-13px); }
+  40%{ transform: translateX(13px); }
+  60%{ transform: translateX(-8px); }
+  80%{ transform: translateX(8px); }
+}
+.card .view{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fff;
+  pointer-events: none;
+  backface-visibility: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+  transition: transform 0.25s linear;
+}
+/* carta virada para baixo: Snoopy pensativo */
+.card .front-view{
+  background: #fafafa;
+  border: 2px solid #e8eef5;
+}
+.card .front-view img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* frente da carta: Snoopy no fundo branco */
+.card .back-view{
+  transform: rotateY(-180deg);
+  background: #fff;
+  border: 2px solid #e8eef5;
+}
+.card .back-view img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.card.flip .back-view{
+  transform: rotateY(0);
+}
+.card.flip .front-view{
+  transform: rotateY(180deg);
+}
+
+@media screen and (max-width: 700px) {
+  .cards{ height: 350px; width: 350px; }
+}
+@media screen and (max-width: 530px) {
+  .cards{ height: 300px; width: 300px; }
+  h1{ font-size: 22px; }
+}
